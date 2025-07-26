@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Feed Desain Vincent</title>
   <style>
     body {
@@ -11,150 +11,90 @@
       padding: 0;
     }
 
-    h1, p {
-      text-align: center;
-      margin-top: 20px;
-    }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 5px;
+    header {
       padding: 20px;
-      max-width: 1000px;
+      text-align: center;
+      background: #fff;
+      border-bottom: 1px solid #ddd;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    .feed {
+      max-width: 600px;
       margin: auto;
+      padding: 20px;
     }
 
-    .gallery-item {
-      position: relative;
+    .post {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin-bottom: 20px;
       overflow: hidden;
-      aspect-ratio: 1/1;
-      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
 
-    .gallery-item img {
+    .post img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto;
       display: block;
-      transition: transform 0.3s ease;
-    }
-
-    .gallery-item:hover img {
-      transform: scale(1.05);
     }
 
     .caption {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      color: #fff;
+      padding: 10px 15px;
       font-size: 14px;
-      padding: 5px;
-      text-align: center;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .gallery-item:hover .caption {
-      opacity: 1;
-    }
-
-    /* Lightbox styles */
-    .lightbox {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.8);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-      display: none;
-    }
-
-    .lightbox img {
-      max-width: 90%;
-      max-height: 90%;
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-    }
-
-    .lightbox:target {
-      display: flex;
-    }
-
-    .close-lightbox {
-      position: absolute;
-      top: 30px;
-      right: 40px;
-      font-size: 40px;
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      z-index: 1001;
+      color: #333;
     }
   </style>
 </head>
 <body>
 
-  <h1>Feed Desain Vincent</h1>
-  <p>Kumpulan hasil karya desain yang telah saya buat</p>
+  <header>
+    <h1>Feed Desain Vincent</h1>
+    <p>Scroll untuk melihat karya-karya terbaru saya</p>
+  </header>
 
-  <div class="gallery">
-    <a href="#img1" class="gallery-item">
+  <div class="feed">
+    <div class="post">
       <img src="baraya opreq.png" alt="Baraya OPREQ">
       <div class="caption">Baraya OPREQ</div>
-    </a>
-    <a href="#img2" class="gallery-item">
+    </div>
+
+    <div class="post">
       <img src="Feed dokum 1.png" alt="Feed Dokumentasi">
       <div class="caption">Feed Dokumentasi</div>
-    </a>
-    <a href="#img3" class="gallery-item">
+    </div>
+
+    <div class="post">
       <img src="LIVE REPORT (1).png" alt="Live Report">
       <div class="caption">Live Report</div>
-    </a>
-    <a href="#img4" class="gallery-item">
+    </div>
+
+    <div class="post">
       <img src="ukm esport feed.png" alt="UKM Esport Feed">
       <div class="caption">UKM Esport Feed</div>
-    </a>
-    <a href="#img5" class="gallery-item">
+    </div>
+
+    <div class="post">
       <img src="ukm esport feed1.png" alt="UKM Esport Feed 1">
       <div class="caption">UKM Esport Feed 1</div>
-    </a>
-    <a href="#img6" class="gallery-item">
+    </div>
+
+    <div class="post">
       <img src="INFOGRAFIS.png" alt="Design Infografis">
       <div class="caption">Design Infografis</div>
-    </a>
-  </div>
+    </div>
 
-  <!-- Lightbox overlays -->
-  <div id="img1" class="lightbox">
-    <a href="#" class="close-lightbox">&times;</a>
-    <img src="baraya opreq.png" alt="Baraya OPREQ">
-  </div>
-  <div id="img2" class="lightbox">
-    <a href="#" class="close-lightbox">&times;</a>
-    <img src="Feed dokum 1.png" alt="Feed Dokumentasi">
-  </div>
-  <div id="img3" class="lightbox">
-    <a href="#" class="close-lightbox">&times;</a>
-    <img src="LIVE REPORT (1).png" alt="Live Report">
-  </div>
-  <div id="img4" class="lightbox">
-    <a href="#" class="close-lightbox">&times;</a>
-    <img src="ukm esport feed.png" alt="UKM Esport Feed">
-  </div>
-  <div id="img5" class="lightbox">
-    <a href="#" class="close-lightbox">&times;</a>
-    <img src="ukm esport feed1.png" alt="UKM Esport Feed 1">
-  </div>
-  <div id="img6" class="lightbox">
-    <a href="#" class="close-lightbox">&times;</a>
-    <img src="INFOGRAFIS.png" alt="Design Infografis">
+    <!-- Tambah foto baru cukup tambah di bawah ini -->
+    <!--
+    <div class="post">
+      <img src="poster lomba.png" alt="Poster Lomba">
+      <div class="caption">Poster Lomba</div>
+    </div>
+    -->
   </div>
 
 </body>

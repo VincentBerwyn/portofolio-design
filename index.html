@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Feed Desain Vincent</title>
+  <title>Portofolio Vincent</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -11,91 +11,144 @@
       padding: 0;
     }
 
-    header {
-      padding: 20px;
+    h1, p {
       text-align: center;
-      background: #fff;
-      border-bottom: 1px solid #ddd;
+      margin-top: 20px;
     }
 
-    h1 {
-      margin: 0;
-    }
-
-    .feed {
-      max-width: 600px;
-      margin: auto;
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 10px;
       padding: 20px;
+      max-width: 1000px;
+      margin: auto;
     }
 
-    .post {
-      background: #fff;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      margin-bottom: 20px;
+    .gallery-item {
+      position: relative;
+      aspect-ratio: 1/1;
       overflow: hidden;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      cursor: pointer;
     }
 
-    .post img {
+    .gallery-item img {
       width: 100%;
-      height: auto;
-      display: block;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
     }
 
     .caption {
-      padding: 10px 15px;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.5);
+      color: #fff;
+      text-align: center;
       font-size: 14px;
-      color: #333;
+      padding: 5px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .gallery-item:hover .caption {
+      opacity: 1;
+    }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      font-size: 40px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Feed Desain Vincent</h1>
-    <p>Scroll untuk melihat karya-karya terbaru saya</p>
-  </header>
+  <h1>Portofolio Desain Vincent</h1>
+  <p>Karya desain dalam format grid + lightbox</p>
 
-  <div class="feed">
-    <div class="post">
-      <img src="baraya opreq.png" alt="Baraya OPREQ">
-      <div class="caption">Baraya OPREQ</div>
-    </div>
+  <div class="gallery" id="gallery"></div>
 
-    <div class="post">
-      <img src="Feed dokum 1.png" alt="Feed Dokumentasi">
-      <div class="caption">Feed Dokumentasi</div>
-    </div>
-
-    <div class="post">
-      <img src="LIVE REPORT (1).png" alt="Live Report">
-      <div class="caption">Live Report</div>
-    </div>
-
-    <div class="post">
-      <img src="ukm esport feed.png" alt="UKM Esport Feed">
-      <div class="caption">UKM Esport Feed</div>
-    </div>
-
-    <div class="post">
-      <img src="ukm esport feed1.png" alt="UKM Esport Feed 1">
-      <div class="caption">UKM Esport Feed 1</div>
-    </div>
-
-    <div class="post">
-      <img src="INFOGRAFIS.png" alt="Design Infografis">
-      <div class="caption">Design Infografis</div>
-    </div>
-
-    <!-- Tambah foto baru cukup tambah di bawah ini -->
-    <!--
-    <div class="post">
-      <img src="poster lomba.png" alt="Poster Lomba">
-      <div class="caption">Poster Lomba</div>
-    </div>
-    -->
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <span class="close-btn" onclick="closeLightbox()">&times;</span>
+    <img id="lightbox-img" src="" alt="">
   </div>
+
+  <!-- Data gambar -->
+  <script>
+    const gambar = [
+      { file: "baraya opreq.png", caption: "Baraya OPREQ" },
+      { file: "Feed dokum 1.png", caption: "Feed Dokumentasi" },
+      { file: "LIVE REPORT (1).png", caption: "Live Report" },
+      { file: "ukm esport feed.png", caption: "UKM Esport Feed" },
+      { file: "ukm esport feed1.png", caption: "UKM Esport Feed 1" },
+      { file: "INFOGRAFIS.png", caption: "Design Infografis" },
+      // Tambahkan lagi di sini:
+      // { file: "poster lomba.png", caption: "Poster Lomba" },
+    ];
+
+    const gallery = document.getElementById("gallery");
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+
+    gambar.forEach((item) => {
+      const div = document.createElement("div");
+      div.className = "gallery-item";
+      div.innerHTML = `
+        <img src="${item.file}" alt="${item.caption}" onclick="openLightbox('${item.file}')">
+        <div class="caption">${item.caption}</div>
+      `;
+      gallery.appendChild(div);
+    });
+
+    function openLightbox(src) {
+      lightboxImg.src = src;
+      lightbox.classList.add("active");
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove("active");
+      lightboxImg.src = "";
+    }
+
+    // Optional: Close lightbox if user clicks outside image
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+  </script>
 
 </body>
 </html>

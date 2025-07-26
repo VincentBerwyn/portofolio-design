@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <title>Feed IG Vincent</title>
+  <title>Feed Desain Vincent</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -29,6 +29,7 @@
       position: relative;
       overflow: hidden;
       aspect-ratio: 1/1;
+      cursor: pointer;
     }
 
     .gallery-item img {
@@ -59,37 +60,102 @@
     .gallery-item:hover .caption {
       opacity: 1;
     }
+
+    /* Lightbox styles */
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      display: none;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    }
+
+    .lightbox:target {
+      display: flex;
+    }
+
+    .close-lightbox {
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      font-size: 40px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      z-index: 1001;
+    }
   </style>
 </head>
 <body>
+
   <h1>Feed Desain Vincent</h1>
   <p>Kumpulan hasil karya desain yang telah saya buat</p>
 
   <div class="gallery">
-    <div class="gallery-item">
+    <a href="#img1" class="gallery-item">
       <img src="baraya opreq.png" alt="Baraya OPREQ">
       <div class="caption">Baraya OPREQ</div>
-    </div>
-    <div class="gallery-item">
+    </a>
+    <a href="#img2" class="gallery-item">
       <img src="Feed dokum 1.png" alt="Feed Dokumentasi">
       <div class="caption">Feed Dokumentasi</div>
-    </div>
-    <div class="gallery-item">
+    </a>
+    <a href="#img3" class="gallery-item">
       <img src="LIVE REPORT (1).png" alt="Live Report">
       <div class="caption">Live Report</div>
-    </div>
-    <div class="gallery-item">
+    </a>
+    <a href="#img4" class="gallery-item">
       <img src="ukm esport feed.png" alt="UKM Esport Feed">
       <div class="caption">UKM Esport Feed</div>
-    </div>
-    <div class="gallery-item">
+    </a>
+    <a href="#img5" class="gallery-item">
       <img src="ukm esport feed1.png" alt="UKM Esport Feed 1">
       <div class="caption">UKM Esport Feed 1</div>
-    </div>
-    <div class="gallery-item">
+    </a>
+    <a href="#img6" class="gallery-item">
       <img src="INFOGRAFIS.png" alt="Design Infografis">
       <div class="caption">Design Infografis</div>
-    </div>
+    </a>
   </div>
+
+  <!-- Lightbox overlays -->
+  <div id="img1" class="lightbox">
+    <a href="#" class="close-lightbox">&times;</a>
+    <img src="baraya opreq.png" alt="Baraya OPREQ">
+  </div>
+  <div id="img2" class="lightbox">
+    <a href="#" class="close-lightbox">&times;</a>
+    <img src="Feed dokum 1.png" alt="Feed Dokumentasi">
+  </div>
+  <div id="img3" class="lightbox">
+    <a href="#" class="close-lightbox">&times;</a>
+    <img src="LIVE REPORT (1).png" alt="Live Report">
+  </div>
+  <div id="img4" class="lightbox">
+    <a href="#" class="close-lightbox">&times;</a>
+    <img src="ukm esport feed.png" alt="UKM Esport Feed">
+  </div>
+  <div id="img5" class="lightbox">
+    <a href="#" class="close-lightbox">&times;</a>
+    <img src="ukm esport feed1.png" alt="UKM Esport Feed 1">
+  </div>
+  <div id="img6" class="lightbox">
+    <a href="#" class="close-lightbox">&times;</a>
+    <img src="INFOGRAFIS.png" alt="Design Infografis">
+  </div>
+
 </body>
 </html>
